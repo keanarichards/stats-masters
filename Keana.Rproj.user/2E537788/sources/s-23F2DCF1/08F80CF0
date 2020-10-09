@@ -1,0 +1,25 @@
+{
+    "id": "08F80CF0",
+    "path": null,
+    "project_path": null,
+    "type": "object_explorer",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1600270541538.0,
+    "source_on_save": false,
+    "relative_order": 6,
+    "properties": {
+        "id": "25f73549b85645f0a61b2de2e2ae78c1",
+        "name": "mod1",
+        "title": "mod1"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 2386389915216,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1600270541538,
+    "read_only": false,
+    "read_only_alternatives": []
+}

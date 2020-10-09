@@ -1,0 +1,113 @@
+# load packages -----------------------------------------------------------
+
+## Package names
+packages <- c("here", "tidyverse", "lme4", "nlme", "lmerTest")
+
+## Install packages not yet installed
+installed_packages <- packages %in% rownames(installed.packages())
+if (any(installed_packages == FALSE)) {
+  install.packages(packages[!installed_packages])
+}
+
+## Packages loading
+invisible(lapply(packages, library, character.only = TRUE))
+
+# load data ---------------------------------------------------------------
+
+long <- read_csv(here("data", "long.csv"))
+
+# primary hypothesis 1 ----------------------------------------------------
+
+## models that will be compared for fit:
+
+## keeping default settings maximum likelihood because we aren't compared fixed effects 
+
+## 1) model with fixed effects + all random intercepts possible
+
+intercept_only <- lmer(threat ~ cond_race*cond_pitch + (1|id) + (1|voice), data = long)
+
+## 2) model with fixed effects + all random intercept + all random slopes possible 
+
+random_slope <- lmer(threat ~ cond_race*cond_pitch + (cond_race+cond_pitch|id) + (cond_race+cond_pitch|voice), data = long)
+anova(intercept_only, random_slope)
+
+
+# primary hypothesis 2 ----------------------------------------------------
+
+## models that will be compared for fit:
+
+## keeping default settings maximum likelihood because we aren't compared fixed effects 
+
+## 1) model with all random intercepts possible
+
+intercept_only <- lmer(leadership ~ cond_race*cond_pitch + (1|id) + (1|voice), data = long)
+
+## 2) model with all random intercepts + all random slopes possible 
+
+random_slope <- lmer(leadership ~ cond_race*cond_pitch + (cond_race+cond_pitch|id) + (cond_race+cond_pitch|voice), data = long)
+
+## 3) model with all random intercepts + fewer slopes
+
+random_slope1 <- lmer(leadership ~ cond_race*cond_pitch + (cond_race|id) + (cond_race+cond_pitch|voice), data = long)
+random_slope2 <- lmer(leadership ~ cond_race*cond_pitch + (cond_pitch|id) + (cond_race+cond_pitch|voice), data = long)
+random_slope3 <- lmer(leadership ~ cond_race*cond_pitch + (cond_pitch+cond_race|id) + (cond_pitch|voice), data = long)
+random_slope4 <- lmer(leadership ~ cond_race*cond_pitch + (cond_pitch+cond_race|id) + (cond_race|voice), data = long)
+
+anova(intercept_only, random_slope, random_slope1, random_slope2, random_slope3, random_slope4)
+
+
+# secondary hypothesis 1 --------------------------------------------------
+
+## models that will be compared for fit:
+
+## keeping default settings maximum likelihood because we aren't compared fixed effects 
+
+## 1) model with all random intercepts possible
+
+intercept_only <- lmer(trust ~ threat + (1|id) + (1|voice), data = long)
+
+## 2) model with all random intercepts + all random slopes possible
+
+random_slope <- lmer(trust ~ threat + (threat|id) + (threat|voice), data = long)
+anova(intercept_only, random_slope)
+
+
+# secondary hypothesis 2 --------------------------------------------------
+
+## models that will be compared for fit:
+
+## keeping default settings maximum likelihood because we aren't compared fixed effects 
+
+## 1) model with all random intercepts possible
+
+intercept_only <- lmer(trust ~ cond_race + (1|id) + (1|voice), data = long)
+
+## 2) model with all random intercepts + all random slopes possible 
+
+random_slope <- lmer(trust ~ cond_race+ (cond_race|id) + (cond_race|voice), data = long)
+anova(intercept_only, random_slope)
+
+# secondary hypothesis 3 --------------------------------------------------
+
+## 1) model with all random intercepts possible
+
+intercept_only <- lmer(dom~ cond_pitch + (1|id) + (1|voice), data = long)
+
+## 2) model with all random intercepts + all random slopes possible 
+
+random_slope <- lmer(dom ~ cond_pitch+ (cond_pitch|id) + (cond_pitch|voice), data = long)
+anova(intercept_only, random_slope)
+
+# secondary hypothesis 4 --------------------------------------------------
+
+## models that will be compared for fit:
+
+## 1) model with fixed effects + all random intercepts possible
+
+intercept_only <- lmer(threatpotential ~ cond_race*cond_pitch + (1|id) + (1|voice), data = long)
+
+## 2) model with fixed effects + all random intercept + all random slopes possible 
+
+random_slope <- lmer(threat ~ cond_race*cond_pitch + (cond_race+cond_pitch|id) + (cond_race+cond_pitch|voice), data = long)
+anova(intercept_only, random_slope)
+

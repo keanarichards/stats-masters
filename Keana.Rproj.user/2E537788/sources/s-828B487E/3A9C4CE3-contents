@@ -1,0 +1,27 @@
+\begin{tabular}{lD{.}{.}{2}}
+\toprule
+(Intercept)    & 15.146^{***}\\
+               & (1.134)     \\
+domC           &  0.255^{***}\\
+               & (0.016)     \\
+\midrule
+Var(residual)  & 201.614\\
+               &        \\
+\midrule
+Var(~1|id)     & 130.520\\
+               &        \\
+\midrule
+Var(~1|voice)  & 7.544\\
+               &      \\
+\midrule
+Total          & 2108\\
+id             & 527\\
+voice          & 8\\
+\midrule
+Log-likelihood & -8930.592\\
+\bottomrule
+\multicolumn{2}{p{.5\linewidth}}{Significance: 
+              $*** \equiv p < 0.001$; 
+              $** \equiv p < 0.01$; 
+              $* \equiv p < 0.05$}\\
+\end{tabular}

@@ -1,0 +1,51 @@
+{
+    "debugBreakpointsState": {
+        "breakpoints": [
+            {
+                "id": 0,
+                "path": "C:/Users/Visitor/OneDrive - PennO365/Comp_transfer2018/Penn/third_yr/stats_masters/stats-masters/source/00_load_raw_data_and_clean.R",
+                "line_number": 57,
+                "function_steps": "",
+                "function_name": "toplevel",
+                "state": 1,
+                "editor_state": 1,
+                "editor_line_number": 57,
+                "is_pending_debug_completion": false,
+                "needs_updated_steps": false,
+                "type": 1,
+                "is_package_breakpoint": false,
+                "package_name": ""
+            },
+            {
+                "id": 1,
+                "path": "C:/Users/Visitor/OneDrive - PennO365/Comp_transfer2018/Penn/third_yr/stats_masters/stats-masters/source/00_load_raw_data_and_clean.R",
+                "line_number": 119,
+                "function_steps": "",
+                "function_name": "toplevel",
+                "state": 1,
+                "editor_state": 1,
+                "editor_line_number": 119,
+                "is_pending_debug_completion": false,
+                "needs_updated_steps": false,
+                "type": 1,
+                "is_package_breakpoint": false,
+                "package_name": ""
+            },
+            {
+                "id": 2,
+                "path": "C:/Users/Visitor/OneDrive - PennO365/Comp_transfer2018/Penn/third_yr/stats_masters/stats-masters/source/00_load_raw_data_and_clean.R",
+                "line_number": 127,
+                "function_steps": "",
+                "function_name": "toplevel",
+                "state": 1,
+                "editor_state": 1,
+                "editor_line_number": 127,
+                "is_pending_debug_completion": false,
+                "needs_updated_steps": false,
+                "type": 1,
+                "is_package_breakpoint": false,
+                "package_name": ""
+            }
+        ]
+    }
+}

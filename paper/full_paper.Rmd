@@ -14,23 +14,26 @@ affiliation:
     institution   : "University of Pennsylvania"
 
 abstract: |
-  Negative stereotypes about Black people are pervasive in America. Specifically, there is a widespread stereotype that Black men are prone to crime and violence (Quillian & Pager, 2001). Recently, it has been argued that personal characteristics that indicate an individual is less threatening (i.e., disarming mechanisms) may reduce the salience of this stereotype and, in turn, reduce barriers to employment and economic advancement (Livingston & Pearce, 2009). In support of this argument, research has demonstrated that there are more baby-faced Black male CEOs than baby-faced White CEOs and that Black male CEOs with a baby-faced appearance are more successful than non-baby-faced Black CEOs (Livingston & Pearce, 2009). Voice pitch, which influences perceptions of threat potential and leadership ability (Klofstad, Anderson & Peters, 2012; Puts, Apicella, & Cardenas, 2012), is another personal characteristic that may serve as a disarming mechanism. We experimentally tested whether voice pitch differentially affects perceptions of leadership and threat in Black and White men using a within-subjects design involving over 500 participants recruited from an online market. As expected, men with lower-pitched voices were rated as more threatening and as better leaders, regardless of their race. Unexpectedly, we found a main effect of race on perceived leadership ability, where Black men were rated higher on leadership traits than White men. Overall, the findings do not suggest that Black men with lower-pitched voices were disadvantaged relative to their counterparts with higher-pitched voices. We discuss possible explanations for our findings, with implications for Black men in the workplace.
+  Negative stereotypes about Black people are pervasive in America. Specifically, there is a widespread stereotype that Black men are prone to crime and violence (Quillian & Pager, 2001). Recently, it has been argued that personal characteristics that indicate an individual is less threatening (i.e., disarming mechanisms) may reduce the salience of this stereotype and, in turn, reduce barriers to employment and economic advancement (Livingston & Pearce, 2009). In support of this argument, research has demonstrated that there are more baby-faced Black male CEOs than baby-faced White CEOs and that Black male CEOs with a baby-faced appearance are more successful than non-baby-faced Black CEOs (Livingston & Pearce, 2009). Voice pitch, which influences perceptions of threat potential and leadership ability (Klofstad, Anderson & Peters, 2012; Puts, Apicella, & Cardenas, 2012), is another personal characteristic that may serve as a disarming mechanism. We experimentally tested whether voice pitch differentially affects perceptions of leadership and threat in Black and White men using a within-subjects design involving over 500 participants recruited from an online market. As expected, men with lower-pitched voices were rated as more threatening, regardless of their race. Unexpectedly, we found a main effect of race on perceived leadership ability, where Black men were rated higher on leadership traits than White men. Overall, the findings do not suggest that Black men with lower-pitched voices were disadvantaged relative to their counterparts with higher-pitched voices. We discuss possible explanations for our findings, with implications for Black men in the workplace.
 
 keywords          : "voice pitch, race, leadership, threat, men, stereotypes"
 wordcount         : "X"
 
-bibliography      : ["library.bib"]
+bibliography      : ["library.bib", "pkg-refs.bib"]
 
-floatsintext      : no
+floatsintext      : yes
 figurelist        : no
 tablelist         : no
 footnotelist      : no
-linenumbers       : yes
+linenumbers       : no
 mask              : no
 draft             : no
+header-includes: #allows you to add in your own Latex packages
+- \usepackage{float} #use the 'float' package
+- \floatplacement{figure}{H} #make every figure with caption = h
 
 documentclass     : "apa6"
-classoption       : "man"
+classoption       : "man, noextraspace"
 output            : papaja::apa6_pdf
 ---
 
@@ -40,10 +43,10 @@ output            : papaja::apa6_pdf
 
 knitr::opts_chunk$set(echo=F, message = F, warning = F)
 
-
-
 library("papaja")
+
 ```
+\raggedbottom
 
 # Introduction
 
@@ -51,8 +54,8 @@ library("papaja")
 
 ```
 
-
 # Methods
+
 ```{r child = here::here("paper",  "01_methods.Rmd")}
 
 ```
@@ -63,21 +66,27 @@ library("papaja")
 
 ```
 
-
 # Discussion
+
 ```{r child = here::here("paper",  "03_discussion.Rmd")}
 
 ```
 
+# Appendix 
 
+```{r child = here::here("paper",  "04_appendix.Rmd")}
+
+
+```
 
 \newpage
 
 # References
 
+
 \begingroup
 \setlength{\parindent}{-0.5in}
 \setlength{\leftskip}{0.5in}
 
-<div id="refs" custom-style="Bibliography"></div>
-\endgroup
+
+

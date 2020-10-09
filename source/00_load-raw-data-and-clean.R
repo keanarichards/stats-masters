@@ -1,7 +1,7 @@
 # load packages -----------------------------------------------------------
 
 ## Package names
-packages <- c("tidyverse", "reshape", "hablar", "here", "snakecase", "data.table")
+packages <- c("tidyverse", "reshape", "hablar", "here", "snakecase", "data.table", "conflicted")
 
 ## Install packages not yet installed
 installed_packages <- packages %in% rownames(installed.packages())
@@ -12,7 +12,8 @@ if (any(installed_packages == FALSE)) {
 ## Packages loading
 invisible(lapply(packages, library, character.only = TRUE))
 
-
+select <- dplyr::select
+rename <- reshape::rename
 # load data ---------------------------------------------------------------
 
 ## note: downloaded from Qualtrics, made sure to export viewing order for randomized questions
@@ -90,7 +91,7 @@ names(raw) <- make.unique(names(raw))
 for (i in names(y)) {
   raw[, i] <- raw %>%
     unite(i, names(raw[grep(i, names(raw))]),
-      remove = T, na.rm = T
+          remove = T, na.rm = T
     ) %>%
     select(i)
 }
@@ -105,7 +106,7 @@ raw <- raw %>% select(-c(idvoice.1:thoughts.31))
 for (i in names(y)) {
   raw[, paste0(i, 1:4)] <- raw %>%
     separate(i, paste0(i, 1:4),
-      sep = "_", remove = T, extra = "drop"
+             sep = "_", remove = T, extra = "drop"
     ) %>%
     select(paste0(i, 1:4))
 }
@@ -193,32 +194,32 @@ for (i in seq(1:4)) {
 # recoding display order vars --------------------------------------------
 
 
-raw$name1 <- recode(raw$name1, FL_171 = "Deshawn", FL_172 = "Tyrone", FL_182 = "Terrell", FL_183 = "Keyshawn")
+raw$name1 <- dplyr::recode(raw$name1, FL_171 = "Deshawn", FL_172 = "Tyrone", FL_182 = "Terrell", FL_183 = "Keyshawn")
 
-raw$voice1 <- recode(raw$voice1,
-  FL_155 = "a", FL_156 = "b", FL_157 = "c", FL_158 = "d",
-  FL_159 = "e", FL_160 = "f", FL_161 = "g", FL_162 = "h"
+raw$voice1 <- dplyr::recode(raw$voice1,
+                            FL_155 = "a", FL_156 = "b", FL_157 = "c", FL_158 = "d",
+                            FL_159 = "e", FL_160 = "f", FL_161 = "g", FL_162 = "h"
 )
 
-raw$name2 <- recode(raw$name2, FL_193 = "Deshawn", FL_195 = "Tyrone", FL_197 = "Terrell", FL_199 = "Keyshawn")
+raw$name2 <- dplyr::recode(raw$name2, FL_193 = "Deshawn", FL_195 = "Tyrone", FL_197 = "Terrell", FL_199 = "Keyshawn")
 
-raw$voice2 <- recode(raw$voice2,
-  FL_202 = "a", FL_204 = "b", FL_205 = "c", FL_206 = "d",
-  FL_207 = "e", FL_208 = "f", FL_209 = "g", FL_210 = "h"
+raw$voice2 <- dplyr::recode(raw$voice2,
+                            FL_202 = "a", FL_204 = "b", FL_205 = "c", FL_206 = "d",
+                            FL_207 = "e", FL_208 = "f", FL_209 = "g", FL_210 = "h"
 )
 
-raw$name3 <- recode(raw$name3, FL_220 = "Scott", FL_221 = "Brad", FL_222 = "Logan", FL_223 = "Brett")
+raw$name3 <- dplyr::recode(raw$name3, FL_220 = "Scott", FL_221 = "Brad", FL_222 = "Logan", FL_223 = "Brett")
 
-raw$voice3 <- recode(raw$voice3,
-  FL_233 = "a", FL_236 = "b", FL_238 = "c", FL_240 = "d",
-  FL_242 = "e", FL_244 = "f", FL_246 = "g", FL_248 = "h"
+raw$voice3 <- dplyr::recode(raw$voice3,
+                            FL_233 = "a", FL_236 = "b", FL_238 = "c", FL_240 = "d",
+                            FL_242 = "e", FL_244 = "f", FL_246 = "g", FL_248 = "h"
 )
 
-raw$name4 <- recode(raw$name4, FL_317 = "Scott", FL_319 = "Brad", FL_321 = "Logan", FL_323 = "Brett")
+raw$name4 <- dplyr::recode(raw$name4, FL_317 = "Scott", FL_319 = "Brad", FL_321 = "Logan", FL_323 = "Brett")
 
-raw$voice4 <- recode(raw$voice4,
-  FL_258 = "a", FL_259 = "b", FL_260 = "c", FL_261 = "d",
-  FL_262 = "e", FL_263 = "f", FL_264 = "g", FL_265 = "h"
+raw$voice4 <- dplyr::recode(raw$voice4,
+                            FL_258 = "a", FL_259 = "b", FL_260 = "c", FL_261 = "d",
+                            FL_262 = "e", FL_263 = "f", FL_264 = "g", FL_265 = "h"
 )
 
 
@@ -233,7 +234,7 @@ long <- raw %>%
   separate(Column, into = c("Column", "condition"), sep = "_") %>%
   spread(Column, Value)
 
-long$condition <- recode(long$condition, "1" = "BH", "2" = "BL", "3" = "WH", "4" = "WL")
+long$condition <- dplyr::recode(long$condition, "1" = "BH", "2" = "BL", "3" = "WH", "4" = "WL")
 
 ## separating race and voice pitch variables to test & plot interaction effects
 
@@ -241,6 +242,22 @@ x <- do.call(rbind, strsplit(long$condition, ""))
 long <- cbind(long, x)
 
 long <- long %>% rename(c("1" = "cond_race", "2" = "cond_pitch"))
+
+long$cond_pitch <- factor(long$cond_pitch)
+
+levels(long$cond_pitch) <- c("High", "Low")
+
+long$cond_race <- factor(long$cond_race)
+
+levels(long$cond_race) <- c("Black", "White")
+
+##changing var type 
+long <- long %>% retype()
+
+## recoding condition & race vars
+
+long$cond_pitchC <- as.numeric(ifelse(long$cond_pitch == "Low",1,2)) - 1.5
+long$cond_raceC <- as.numeric(ifelse(long$cond_race == "Black",1,2)) - 1.5
 
 # export clean wide and long data -------------------------------------------------------
 

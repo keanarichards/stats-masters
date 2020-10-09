@@ -1,0 +1,28 @@
+<!-- html table generated in R 3.6.3 by xtable 1.8-4 package -->
+<!-- Mon Sep 14 11:48:26 2020 -->
+<table style="border-collapse: collapse; border-style: none; margin: 2ex auto">
+<tr> <th>   </th> <th> max_model4 </th> <th> fin_mod4 </th> <th> fin_mod4a </th>  </tr>
+  <tr> <td align="right"> Coefficients (Std. Error) </td> <td>  </td> <td>  </td> <td>  </td> </tr>
+  <tr> <td align="right"> (Intercept) </td> <td> 15.033 (0.9918) </td> <td> 15.146 (1.1341) </td> <td> 12.077 (0.9613) </td> </tr>
+  <tr> <td align="right"> domC </td> <td>  0.266 (0.0294) </td> <td>  0.255 (0.0163) </td> <td>  0.176 (0.0105) </td> </tr>
+  <tr> <td align="right">  </td> <td>  </td> <td>  </td> <td>  </td> </tr>
+  <tr> <td align="right"> Variance components </td> <td>  </td> <td>  </td> <td>  </td> </tr>
+  <tr> <td align="right"> (Intercept) | id </td> <td> 11.742 </td> <td> 11.425 </td> <td> 10.753 </td> </tr>
+  <tr> <td align="right"> domC | id </td> <td>  0.247 </td> <td>  </td> <td>  </td> </tr>
+  <tr> <td align="right"> (Intercept) | voice </td> <td>  2.260 </td> <td>  2.747 </td> <td>  2.231 </td> </tr>
+  <tr> <td align="right"> domC | voice </td> <td>  0.064 </td> <td>  </td> <td>  </td> </tr>
+  <tr> <td align="right">  </td> <td>  </td> <td>  </td> <td>  </td> </tr>
+  <tr> <td align="right"> Correlations </td> <td>  </td> <td>  </td> <td>  </td> </tr>
+  <tr> <td align="right"> (Intercept) x domC | id </td> <td>  1 </td> <td>  </td> <td>  </td> </tr>
+  <tr> <td align="right"> (Intercept) x domC | voice </td> <td>  1 </td> <td>  </td> <td>  </td> </tr>
+  <tr> <td align="right">  </td> <td>  </td> <td>  </td> <td>  </td> </tr>
+  <tr> <td align="right"> sigma </td> <td> 12.9 </td> <td> 14.2 </td> <td> 8.85 </td> </tr>
+  <tr> <td align="right">  </td> <td>  </td> <td>  </td> <td>  </td> </tr>
+  <tr> <td align="right"> REML </td> <td> 17625 </td> <td> 17861 </td> <td>  </td> </tr>
+  <tr> <td align="right"> rho.e </td> <td>  </td> <td>  </td> <td> smoothed Huber (k = 1.345, s = 10) </td> </tr>
+  <tr> <td align="right"> rho.sigma.e </td> <td>  </td> <td>  </td> <td> smoothed Huber, Proposal II (k = 1.345, s = 10) </td> </tr>
+  <tr> <td align="right"> rho.b_1 </td> <td>  </td> <td>  </td> <td> smoothed Huber (k = 1.345, s = 10) </td> </tr>
+  <tr> <td align="right"> rho.sigma.b_1 </td> <td>  </td> <td>  </td> <td> smoothed Huber, Proposal II (k = 1.345, s = 10) </td> </tr>
+  <tr> <td align="right"> rho.b_2 </td> <td>  </td> <td>  </td> <td> smoothed Huber (k = 1.345, s = 10) </td> </tr>
+  <tr> <td align="right"> rho.sigma.b_2 </td> <td>  </td> <td>  </td> <td> smoothed Huber, Proposal II (k = 1.345, s = 10) </td> </tr>
+   </table>

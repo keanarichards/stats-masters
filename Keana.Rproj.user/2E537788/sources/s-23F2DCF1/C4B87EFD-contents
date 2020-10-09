@@ -1,0 +1,94 @@
+sink("steenbergen-jones-lme4.Rlog",split=TRUE)
+load("steenbergen-jones-data.RData")
+
+# Steenbergen and Jones example:
+# Dependent variable is 
+# 'support': the support for EU
+# Independent variables are
+# at country level:
+#   'tenurez': Tenure within EU (standardized)
+#   'tradez':  Within-EU trade (standardized)
+#   'gdpz':    GDP per capita (standardized)
+#   'inflz':   Inflation (standardized)
+# at individual level
+#   'inclow':  Dummy for lowest income quartile
+#   'inchi':   Dummy for highest income quartile
+#   'lright':  Left-right self-placement
+#   'opinion leadership': (centered)
+#   'male': Male gender dummy
+#   'age': Age
+
+## Users may need to install the package 'lme4' before running the following
+## lines, e.g. with:
+# install.packages("lme4")
+
+library(lme4)
+sj4.ml <- lmer(support ~ tenurez + tradez + gdpz + inflz
+                         + inclow + inchi + lright + olead + male + age
+                         + (1 | country),
+             REML = FALSE,
+             data = steenbergen_jones_data)
+# 'lmer' does not report p-values
+summary(sj4.ml)
+
+sj4.reml <- lmer(support ~ tenurez + tradez + gdpz + inflz
+                         + inclow + inchi + lright + olead + male + age
+                         + (1 | country),
+             REML = TRUE, # redundant, because the default 
+             data = steenbergen_jones_data)
+summary(sj4.reml)
+
+library(lmerTest)
+# 'lmerTest' overwrites the 'lmer' function with its own version
+# so we run the same model again and obtain a summary
+sj4LT.reml <- lmer(support ~ tenurez + tradez + gdpz + inflz
+                         + inclow + inchi + lright + olead + male + age
+                         + (1|country),
+             data = steenbergen_jones_data)
+summary(sj4LT.reml)
+
+confint(sj4.reml)
+
+confint(sj4LT.reml)
+
+## Users may need to install the package 'iimm' before running the following
+## lines, e.g. with:
+# install.packages(c("devtools","lmerTest","pbkrtest"))
+# devtools::install_github("melff/iimm")
+
+
+library(iimm)
+t0 <- Sys.time()
+sj4.reml.heur.t <- lmer_t(sj4.reml)
+t1 <- Sys.time()
+sj4.reml.Satter.t <- lmer_t(sj4.reml,method="Satterthwaite")
+t2 <- Sys.time()
+sj4.reml.KR.t <- lmer_t(sj4.reml,method="Kenward-Roger")
+t3 <- Sys.time()
+
+t1 - t0
+t2 - t1
+t3 - t2
+
+summary(sj4.reml.heur.t)
+summary(sj4.reml.Satter.t)
+summary(sj4.reml.KR.t)
+
+library(memisc)
+# First we create a coefficient style
+# that combines estimates and p-values
+setCoefTemplate(pval=c(
+                    est="($est:#)($p:*)",
+                    p="(($p:#))"
+                ))
+# Second we construct ML and REML tables
+mtML <-   mtable("Normal"      = sj4.ml,
+                 coef.style="pval")
+mtREML <- mtable(Normal        = sj4.reml,
+                 Satterthwaite = sj4.reml.Satter.t,
+                 coef.style="pval")
+# ... and combine them
+c(ML=mtML,
+  REML=mtREML)
+
+sink()

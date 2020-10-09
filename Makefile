@@ -1,4 +1,4 @@
-all: data/wide.csv data/long.csv
+all: paper/full_paper.pdf
 
 .PHONY: all clean help
 .DELETE_ON_ERROR:
@@ -6,8 +6,7 @@ all: data/wide.csv data/long.csv
 
 help: Makefile
 	@sed -n 's/^##//p' $<
-
-
+	
 ## data/wide.csv: create wide dataset
 
 data/wide.csv: source/00_load-raw-data-and-clean.R 
@@ -23,32 +22,32 @@ data/long.csv: source/00_load-raw-data-and-clean.R
 data/vars-and-labels.csv: source/00_load-raw-data-and-clean.R 
 	Rscript $<
 
-pilot/source/02_plots.R: pilot/data/clean.csv 
-	
-pilot/figs/%.png: pilot/source/02_plots.R
+## figs/%.png: create all figures associated with paper, as .png files  
+
+figs/%.png: source/02_plots.R data/wide.csv data/long.csv
 	Rscript $<
-
-pilot/paper_sections/results.docx: pilot/paper_sections/results.Rmd pilot/data/clean.csv \
-	pilot/source/01_preregistered-analyses.R pilot/source/03_exploratory-analyses.R \
-	pilot/figs/%.png
-	Rscript -e 'rmarkdown::render("$<")'
-
 
 # paper 
 
-paper/pilot.docx: paper/pilot.Rmd pilot/paper_sections/methods.docx pilot/paper_sections/results.docx
+paper/00_intro.pdf: paper/00_intro.Rmd 
 	Rscript -e 'rmarkdown::render("$<")'
 
-paper/study1.docx: paper/study1.Rmd study1/paper_sections/methods.docx study1/paper_sections/results.docx
+paper/01_methods.pdf: paper/01_methods.Rmd data/wide.csv data/long.csv
 	Rscript -e 'rmarkdown::render("$<")'
 
-paper/study2.docx: paper/study2.Rmd study2/paper_sections/methods.docx study2/paper_sections/results.docx
+paper/02_results.pdf: paper/02_results.Rmd data/wide.csv data/long.csv figs/%.png
 	Rscript -e 'rmarkdown::render("$<")'
 
-paper/draft_paper.docx: paper/draft_paper.Rmd paper/pilot.docx paper/study1.docx \
-	paper/study2.docx
+paper/03_discussion.pdf: paper/03_discussion.Rmd
+	Rscript -e 'rmarkdown::render("$<")'
+
+paper/04_appendix.pdf: paper/04_appendix.Rmd figs/%.png
+	Rscript -e 'rmarkdown::render("$<")'
+
+paper/full_paper.pdf: paper/full_paper.Rmd data/wide.csv data/long.csv figs/%.png paper/00_intro.Rmd \
+paper/01_methods.Rmd paper/02_results.Rmd paper/03_discussion.Rmd paper/04_appendix.Rmd
 	Rscript -e 'rmarkdown::render("$<")'
 
 clean: 
-	rm -f */long.csv */wide.csv */vars-and-labels.csv .Rhistory */.Rhistory
-	
+	rm -f */long.csv */wide.csv */vars-and-labels.csv .Rhistory */.Rhistory \
+	*/*.html */*.pdf */*.tex */*.out */*.aux */*.png

@@ -1,0 +1,53 @@
+---
+title: "R Notebook"
+output: html_notebook
+editor_options: 
+  chunk_output_type: inline
+---
+
+# README.md
+readme.md file is a overview of all files in the project including title, author, topic, copyright information, etc. should also indicate how the project is organized & instructions on how to reproduce the project 
+```{r}
+sessionInfo()
+```
+
+# naming conventions
+
+- Scripts: 00_File-name
+- R objects: using underscore (e.g. health_data)
+comments written with ##
+- functions labeled with BigCamelCase
+- filanames using _ if with numbers then - or just - 
+
+
+# data structure
+
+/data
+/source
+/docs with child .Rmd 
+/output with /figures 
+/temp
+/
+Makefile
+README.md
+
+# comments
+
+all source code files begin with comment header including: 
+    - a description of what the file does
+    - the date it was last updated
+    - the name of the file's creator and any contributors
+
+# creating final product
+
+- Use child .Rmd documents in final doc
+- will need to load original CSV file to the final HTML (or each child directory) then source relevant code to analyze 
+- use this site for figure settings: http://zevross.com/blog/2017/06/19/tips-and-tricks-for-working-with-images-and-figures-in-r-markdown-documents/
+- if you don't want error messages or warnings, set warning, message and error to F
+
+
+
+# Misc
+
+- load relevant packages at the beginning of each doc
+- see p. 116 of reproducible research in R for example GNU make

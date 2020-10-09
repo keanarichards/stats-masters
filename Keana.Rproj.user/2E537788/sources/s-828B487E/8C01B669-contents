@@ -1,0 +1,267 @@
+# # load packages -----------------------------------------------------------
+# 
+# ## Package names
+# packages <- c("here", "tidyverse", "lme4", "nlme", "lmerTest", "buildmer", "memisc")
+# 
+# ## Install packages not yet installed
+# installed_packages <- packages %in% rownames(installed.packages())
+# if (any(installed_packages == FALSE)) {
+#   install.packages(packages[!installed_packages])
+# }
+# 
+# ## Packages loading
+# invisible(lapply(packages, library, character.only = TRUE))
+# 
+# remotes::install_github("melff/iimm")
+# library(iimm)
+# 
+# 
+# # load data ---------------------------------------------------------------
+# 
+# long <- read_csv(here("data", "long.csv"))
+# 
+# 
+# 
+# setSummaryTemplate(mer = c("Log-likelihood" = "($logLik:f#)",
+#                            "Deviance" = "($deviance:f#)",
+#                            "AIC" = "($AIC:f#)",
+#                            "BIC" = "($BIC:f#)",
+#                            "N" = "($N:d)",
+#                            "Groups" = "($Groups:d)"))
+# 
+# getSummary.mer <- function (obj, alpha = 0.05, ...) {
+#   smry <- summary(obj)
+#   coef <- smry[["coefficients"]]
+#   lower <- qnorm(p = alpha/2, mean = coef[, 1], sd = coef[,2])
+#   upper <- qnorm(p = 1 - alpha/2, mean = coef[, 1], sd = coef[,2])
+#   if (ncol(smry[["coefficients"]]) == 3) {
+#     p <- (1 - pnorm(smry[["coefficients"]][, 3])) * 2
+#     coef <- cbind(coef, p, lower, upper)
+#   }
+#   else {
+#     coef <- cbind(coef, lower, upper)
+#   }
+#   RE <- smry@REmat
+#   ranef <- cbind(as.numeric(RE[,3]), as.numeric(RE[,4]), NA,NA,NA,NA)
+#   rownames(ranef) <- paste("Ranef", RE[,1], sep = " - ")
+#   coef <- rbind(coef, ranef)
+#   colnames(coef) <- c("est", "se", "stat", "p", "lwr", "upr")
+#   
+#   ## Factor levels.
+#   xlevels <- list()
+#   Contr <- names(attr(model.matrix(obj), "contrasts"))
+#   for (c in Contr) xlevels[[c]] <- levels(obj@frame[,c])
+#   
+#   ## Model fit statistics.
+#   ll <- logLik(obj)[1]
+#   deviance <- deviance(obj)
+#   AIC <- AIC(obj)
+#   BIC <- BIC(obj)
+#   N <- as.numeric(smry@dims["n"])
+#   G <- as.numeric(smry@ngrps)
+#   sumstat <- c(logLik = ll, deviance = deviance, AIC = AIC,
+#                BIC = BIC, N = N, Groups = G)
+#   
+#   ## Return model summary.
+#   list(coef = coef, sumstat = sumstat,
+#        contrasts = attr(model.matrix(obj), "contrasts"),
+#        xlevels = xlevels, call = obj@call)
+# }
+# 
+# class(fin_mod1) <- "merMod"
+# fin_mod1 <- lmer(threat ~ 1 + cond_pitch*cond_race + (1 +cond_race + cond_pitch| id) + (1 + cond_pitch | voice), data= long, control = lmerControl(optimizer = "bobyqa"))
+# 
+# lmert <- lmer_t(fin_mod1, method = "Satterthwaite")
+# summary(lmert)
+# 
+# summary(lmert)
+# 
+# getSummary.merMod(obj = fin_mod1)
+# 
+# 
+# summary(fin_mod1)
+# 
+# smry[["coefficients"]][, 3]
+# 
+# show_html(getSummary.lmer_t(lmert))
+# 
+# 
+# getSummary.lmer_t <- function (obj, alpha = 0.05, ...) {
+#   
+#   smry <- summary(obj$lmer)
+#   ctab <- obj$coefTab
+#   
+#   est  <- ctab[,1]
+#   se   <- ctab[,2]
+#   tval <- ctab[,3]
+#   ddf  <- ctab[,4]
+#   pval <- ctab[,7]
+#   
+#   lower <- est + se*qt(p = alpha/2,df=ddf)
+#   upper <- est + se*qt(p = 1 - alpha/2,df=ddf)
+#   
+#   coef <- cbind(est,se,tval,pval,lower,upper)
+#   
+#   dn.cf <- list(
+#     rownames(coef),
+#     c("est","se","stat","p","lwr","upr"),
+#     names(obj$lmer@frame)[1]
+#   )
+#   dim(coef) <- c(dim(coef)[1],dim(coef)[2],1)
+#   dimnames(coef) <- dn.cf
+#   
+#   varcor <- smry$varcor
+#   
+#   VarPar <- list()
+#   VarPar.names <- c()
+#   
+#   for(i in seq_along(varcor)){
+#     vc.i <- varcor[[i]]
+#     lv.i <- names(varcor)[i]
+#     vr.i <- diag(vc.i)
+#     cv.i <- vc.i[lower.tri(vc.i)]
+#     nms.i <- rownames(vc.i)
+#     nms.i <- gsub("(Intercept)","1",nms.i,fixed=TRUE)
+#     vrnames.i <- paste0("Var(~",nms.i,"|",lv.i,")")
+#     cvnames.i <- t(outer(nms.i,nms.i,FUN=paste,sep=":"))
+#     cvnames.i <- cvnames.i[lower.tri(cvnames.i)]
+#     if(length(cvnames.i))
+#       cvnames.i <- paste0("Cov(~",cvnames.i,"|",lv.i,")")
+#     vp.i <- matrix(NA,nrow=length(vr.i)+length(cv.i),ncol=6)
+#     vp.i[,1] <- c(vr.i,cv.i)
+#     dim(vp.i) <- c(dim(vp.i),1)
+#     dimnames(vp.i) <- list(c(vrnames.i,cvnames.i),
+#                            c("est","se","stat","p","lwr","upr"),
+#                            names(obj$lmer@frame)[1])
+#     VarPar <- c(VarPar,list(vp.i))
+#     VarPar.names <- c(paste0("Var(",lv.i,")"),
+#                       VarPar.names)
+#   }
+#   if(smry$sigma>1){
+#     vp.i <- matrix(NA,nrow=1,ncol=6)
+#     vp.i[1] <- smry$sigma^2
+#     dim(vp.i) <- c(dim(vp.i),1)
+#     dimnames(vp.i) <- list("Var(residual)",
+#                            c("est","se","stat","p","lwr","upr"),
+#                            names(obj$lmer@frame)[1])
+#     VarPar <- c(list(vp.i),VarPar)
+#     VarPar.names <- c("Var(residual)",VarPar.names)
+#   }
+#   names(VarPar) <- VarPar.names
+#   
+#   ## Factor levels.
+#   xlevels <- list()
+#   Contr <- names(attr(model.matrix(obj$lmer), "contrasts"))
+#   for (c in Contr) xlevels[[c]] <- levels(obj$lmer@frame[,c])
+#   
+#   ## Model fit statistics.
+#   ll <- logLik(obj$lmer)[1]
+#   isREML <- inherits(obj$lmer@resp,"lmerResp") && obj$lmer@resp$REML > 0
+#   if(!isREML)
+#     deviance <- deviance(obj$lmer)
+#   else 
+#     deviance <- lme4::REMLcrit(obj$lmer)
+#   AIC <- AIC(obj$lmer)
+#   BIC <- BIC(obj$lmer)
+#   
+#   N <- c(Total=nobs(obj$lmer))
+#   G <-as.integer(smry$ngrps)
+#   names(G) <- names(smry$ngrps)
+#   G <- c(N,G)
+#   
+#   sumstat <- c(logLik = ll,
+#                deviance = deviance,
+#                AIC = AIC,
+#                BIC = BIC)
+#   ## Return model summary.
+#   
+#   ans <- list(coef= coef)
+#   
+#   ans <- c(ans,VarPar)
+#   
+#   ans <- c(ans,       
+#            list(Groups = G,
+#                 sumstat = sumstat,
+#                 contrasts = Contr, ## Reuse 'Contr'
+#                 xlevels = xlevels,
+#                 call = obj$lmer@call))
+#   return(ans)
+# }
+# 
+# library(robustlmm)
+# 
+# lmert <- lmer_t(fin_mod4)
+# mtable("robust" = fin_mod4a)
+# summary(fin_mod4a)
+# summary(fin_mod4)
+# library(xtable)
+# 
+# table <- xtable(compare(max_model4, fin_mod4, fin_mod4a))
+# print(table, type = "html")
+
+# load packages -----------------------------------------------------------
+
+## Package names
+packages <- c("here", "tidyverse", "sjPlot", "sjmisc", "lme4", "sjlabelled", "papaja", "robustlmm", "memisc", "xtable", "webshot", "pander")
+
+## Install packages not yet installed
+installed_packages <- packages %in% rownames(installed.packages())
+if (any(installed_packages == FALSE)) {
+  install.packages(packages[!installed_packages])
+}
+
+## Packages loading
+invisible(lapply(packages, library, character.only = TRUE))
+
+remotes::install_github("melff/iimm")
+library(iimm)
+
+# load data ---------------------------------------------------------------
+
+long <- read_csv(here("data", "long.csv"))
+
+
+max_model4<- lmer(threat ~ domC+ (domC|id) + (domC|voice), data = long)
+fin_mod4 <- lmer(threat ~ 1 + domC + (1 | id) + (1 | voice), data= long, control = lmerControl(optimizer = "bobyqa"))
+fin_mod4a <- rlmer(threat ~ 1 + domC + (1 | id) + (1 | voice), data= long, control = lmerControl(optimizer = "bobyqa"))
+
+
+fixed_plot1 <- plot_model(fin_mod4, type = "est")
+
+## random effects
+
+random_plot1 <- plot_model(fin_mod4,
+                           type = "re",
+                           grid = T,
+                           show.values = T, vline.color = "black")[[2]] + theme_apa()
+
+## assumptions 
+
+asm1 <- plot_model(fin_mod4, type='diag')
+
+## table with final model
+class(fin_mod4) <- "lmerMod"
+final_table1 <- mtable("Final model" = fin_mod4)
+write_html(final_table1, file = "final_table1.html")
+webshot(here("final_table1.html"), here("final_table1.png"), selector = "table", zoom= 2)
+
+## table with model comparison 
+
+compare_table1 <- xtable(compare(max_model4, fin_mod4, fin_mod4a),auto = T)
+
+View(compare_table1)
+
+write_html(compare_table1, file = "compare_table1.html")
+
+print(xtable(compare(max_model4, fin_mod4, fin_mod4a), digits=2), type="html", include.rownames = FALSE, 
+      html.table.attributes='class="table table-striped table-hover"')
+
+compare_table1
+library(htmlTable)
+htmlTable::htmlTable(compare(max_model4, fin_mod4, fin_mod4a), css.cell = "padding-left: 1em; padding-right: 1em;", caption ="`dist` regressed on `speed`", align = "rrrr")
+
+fin_mod4 %>% tab_model(.)
+
+tab_model(max_model4, fin_mod4, fin_mod4a)
+tab_model(max_model4)
+toLatex(sessionInfo())
