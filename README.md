@@ -8,6 +8,13 @@ Keana Richards
 Note: words that are italicized below represent code   
 
 ## Setting up: 
+
+
+First must run the add .here file to directory. 
+Then, you must load the "here" package so the source files will run properly, see more on why the "here" package is a good idea [here](http://jenrichmond.rbind.io/post/how-to-use-the-here-package/), [here](https://github.com/jennybc/here_here), and [here](https://malco.io/2018/11/05/why-should-i-use-the-here-package-when-i-m-already-using-projects/)!
+After loading the package, run the following in the console before starting the project:
+*set_here()*, which will ensure that the gender practice project is the root directory for all associated code. To check that this worked, go to the folder that has the gender-practice.Rproj and make sure that there is a .here file in the same folder as the .Rproj file.  
+
  
 There are two options for replicating the results and compiling the full paper after forking this project (note: for both of these options, this process will likely take several hours the first time the code is run - after which the most computationally intensive code chunks will be cached, so the code will take far less time after running thereafter): 
 
@@ -18,12 +25,6 @@ There are two options for replicating the results and compiling the full paper a
 I also recommend reading the section on Makefiles from "Reproducible Research with R and RStudio" from Christopher Gandrud for a beginner-friendly explanation of what they do and some basic syntax. 
 
 Once GNU Make is downloaded, check that it will be used to compile the product by going to the 'Build' >> 'Configure Build Tools' at the top of the screen in RStudio. Under the dropdown for Project build tools, click 'Makefile' and make sure that the "Makefile directory" is set to "(Project Root)." If there are any issues with this, try the link above to learn more about GNU Make or the various resources on that page. 
-
-CHECK ON THIS (is it necessary if I have the .here file in the folder already? and will I need to see whether this should be listed before above part with 2 opts)
-
-Then, you must load the "here" package so the source files will run properly, see more on why the "here" package is a good idea [here](http://jenrichmond.rbind.io/post/how-to-use-the-here-package/), [here](https://github.com/jennybc/here_here), and [here](https://malco.io/2018/11/05/why-should-i-use-the-here-package-when-i-m-already-using-projects/)!
-After loading the package, run the following in the console before starting the project:
-*set_here(path = '..')*, which will ensure that the gender practice project is the root directory for all associated code. To check that this worked, go to the folder that has the gender-practice.Rproj and make sure that there is a .here file in the same folder as the .Rproj file.  
 
 Running the makefile using *make all* in the RStudio Terminal will re-run all code from start to finish to produce the final product. If the terminal is not preferable, another option to compile the final product is to click "Build" at the top of RStudio and run "Build all."
 

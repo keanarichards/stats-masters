@@ -43,7 +43,10 @@ output            : papaja::apa6_pdf
 
 knitr::opts_chunk$set(echo=F, message = F, warning = F)
 
-library("papaja")
+## Install the stable development versions from GitHub
+if(!"papaja" %in% rownames(installed.packages())) devtools::install_github("crsh/papaja")
+
+library(papaja)
 
 ```
 \raggedbottom
