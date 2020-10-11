@@ -152,7 +152,7 @@ webshot(here("figs", "final_table3.html"), here("figs", "final_table3.png"), sel
 tab_model(max_model3, fin_mod3, fin_mod3a, file = here("figs", "compare_table3.html"),show.p = F, show.df = F, dv.labels = c("(1)", "(2)", "(3)"))
 webshot(here("figs", "compare_table3.html"), here("figs", "compare_table3.png"), selector = "table", zoom= 2)
 
-# model 5 -----------------------------------------------------------------
+# model 4 -----------------------------------------------------------------
 
 ## assumptions 
 
@@ -174,7 +174,7 @@ webshot(here("figs", "final_table5.html"), here("figs", "final_table5.png"), sel
 tab_model(max_model5, fin_mod5, fin_mod5a, file = here("figs", "compare_table5.html"), show.p = F, show.df = F, dv.labels = c("(1)", "(2)", "(3)"))
 webshot(here("figs", "compare_table5.html"), here("figs", "compare_table5.png"), selector = "table", zoom= 2)
 
-# model 6 -----------------------------------------------------------------
+# model 5 -----------------------------------------------------------------
 
 ## assumptions 
 
@@ -196,7 +196,7 @@ tab_model(max_model6, fin_mod6, fin_mod6a, file = here("figs", "compare_table6.h
 webshot(here("figs", "compare_table6.html"), here("figs", "compare_table6.png"), selector = "table", zoom= 2)
 
 
-# model 7 -----------------------------------------------------------------
+# model 6 -----------------------------------------------------------------
 
 ## assumptions 
 

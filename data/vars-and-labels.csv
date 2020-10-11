@@ -1,0 +1,172 @@
+"col_names","des"
+"headphones_speakers","Before you start listening to the recordings, please indicate whether you will be listening through speakers or headphones.
+Note: We recommend using headphones to reduce the influence of background noise, but understand if you do not have access to those. - Selected Choice"
+"headphones_speakers_other","Before you start listening to the recordings, please indicate whether you will be listening through speakers or headphones.
+Note: We recommend using headphones to reduce the influence of background noise, but understand if you do not have access to those. - Other - Text"
+"age","What is your age (in years)?"
+"educ","What is the highest level of school you have completed or the highest degree you have received?"
+"race","Choose one or more races that you consider yourself to be: - Selected Choice"
+"race_other","Choose one or more races that you consider yourself to be: - Other - Text"
+"sex","What is your sex?"
+"residence","Which of the following would best describe the area in which you live? - Selected Choice"
+"residence_other","Which of the following would best describe the area in which you live? - Other - Text"
+"pol_ideology","Here is a 7-point scale on which the political views that people might hold are arranged from extremely liberal (left) to  extremely conservative (right). Where would you place yourself on this scale? - Political Ideology"
+"pol_party","What political party do you identify with, if any? - Selected Choice"
+"pol_party_other","What political party do you identify with, if any? - Other - Text"
+"suspicion","If you were to explain what the study is about to another person, what would you say? - Selected Choice"
+"suspicion_other","If you were to explain what the study is about to another person, what would you say? - The researcher isn't telling me what the study is about. My guess is that the study is about... - Text"
+"mc_name","We would like to see how well you recall the names of the participants in the study. Please indicate which of the following participants you listened to from the recordings."
+"mc_name_do","We would like to see how well you recall the names of the participants in the study. Please indicate which of the following participants you listened to from the recordings. - Display Order"
+"mc_race_w","Of the four voices that you listened to, how many did you think were White?"
+"mc_race_b","Of the four voices that you listened to, how many did you think were Black?"
+"b_race_name_1","Based upon the names below, please rate the likelihood that the person is Black. - Scott"
+"b_race_name_2","Based upon the names below, please rate the likelihood that the person is Black. - Logan"
+"b_race_name_3","Based upon the names below, please rate the likelihood that the person is Black. - Brad"
+"b_race_name_4","Based upon the names below, please rate the likelihood that the person is Black. - Brett"
+"b_race_name_5","Based upon the names below, please rate the likelihood that the person is Black. - Deshawn"
+"b_race_name_6","Based upon the names below, please rate the likelihood that the person is Black. - Tyrone"
+"b_race_name_7","Based upon the names below, please rate the likelihood that the person is Black. - Keyshawn"
+"b_race_name_8","Based upon the names below, please rate the likelihood that the person is Black. - Terrell"
+"b_race_name_do","Based upon the names below, please rate the likelihood that the person is Black. - Display Order"
+"w_race_name_1","Based upon the names below, please rate the likelihood that the person is White. - Scott"
+"w_race_name_2","Based upon the names below, please rate the likelihood that the person is White. - Logan"
+"w_race_name_3","Based upon the names below, please rate the likelihood that the person is White. - Brad"
+"w_race_name_4","Based upon the names below, please rate the likelihood that the person is White. - Brett"
+"w_race_name_5","Based upon the names below, please rate the likelihood that the person is White. - Deshawn"
+"w_race_name_6","Based upon the names below, please rate the likelihood that the person is White. - Tyrone"
+"w_race_name_7","Based upon the names below, please rate the likelihood that the person is White. - Keyshawn"
+"w_race_name_8","Based upon the names below, please rate the likelihood that the person is White. - Terrell"
+"w_race_name_do","Based upon the names below, please rate the likelihood that the person is White. - Display Order"
+"feedback","Please provide any feedback (e.g. technical issues, typos, etc.) about the study below."
+"mc_name_score","Score"
+"cond_do","FL_3 - Block Randomizer - Display Order"
+"name1","FL_153 - Block Randomizer - Display Order"
+"voice1","FL_154 - Block Randomizer - Display Order"
+"name2","FL_191 - Block Randomizer - Display Order"
+"voice2","FL_201 - Block Randomizer - Display Order"
+"name3","FL_219 - Block Randomizer - Display Order"
+"voice3","FL_232 - Block Randomizer - Display Order"
+"name4","FL_316 - Block Randomizer - Display Order"
+"voice4","FL_257 - Block Randomizer - Display Order"
+"mc_race_q_do","MC race - Display Order"
+"race_name_q_do","MC race2 - Display Order"
+"idvoice1","What was the identification number of the participant stated in the recording? Type in the four-digit (formatted like the following: 4791) identification number below."
+"idvoice2","What was the identification number of the participant stated in the recording? Type in the four-digit (formatted like the following: 4791) identification number below."
+"idvoice3","What was the identification number of the participant stated in the recording? Type in the four-digit (formatted like the following: 4791) identification number below."
+"idvoice4","What was the identification number of the participant stated in the recording? Type in the four-digit (formatted like the following: 4791) identification number below."
+"trust1","The person in the recording sounds... - Trustworthy"
+"trust2","The person in the recording sounds... - Trustworthy"
+"trust3","The person in the recording sounds... - Trustworthy"
+"trust4","The person in the recording sounds... - Trustworthy"
+"dom1","The person in the recording sounds... - Dominant"
+"dom2","The person in the recording sounds... - Dominant"
+"dom3","The person in the recording sounds... - Dominant"
+"dom4","The person in the recording sounds... - Dominant"
+"threat1","The person in the recording sounds... - Threatening"
+"threat2","The person in the recording sounds... - Threatening"
+"threat3","The person in the recording sounds... - Threatening"
+"threat4","The person in the recording sounds... - Threatening"
+"intell1","The person in the recording sounds... - Intelligent"
+"intell2","The person in the recording sounds... - Intelligent"
+"intell3","The person in the recording sounds... - Intelligent"
+"intell4","The person in the recording sounds... - Intelligent"
+"comm1","The person in the recording sounds... - Like they are an effective communicator"
+"comm2","The person in the recording sounds... - Like they are an effective communicator"
+"comm3","The person in the recording sounds... - Like they are an effective communicator"
+"comm4","The person in the recording sounds... - Like they are an effective communicator"
+"prob1","The person in the recording sounds... - Like they are a problem-solver"
+"prob2","The person in the recording sounds... - Like they are a problem-solver"
+"prob3","The person in the recording sounds... - Like they are a problem-solver"
+"prob4","The person in the recording sounds... - Like they are a problem-solver"
+"conf1","The person in the recording sounds... - Confident"
+"conf2","The person in the recording sounds... - Confident"
+"conf3","The person in the recording sounds... - Confident"
+"conf4","The person in the recording sounds... - Confident"
+"trait_do1","The person in the recording sounds... - Display Order"
+"trait_do2","The person in the recording sounds... - Display Order"
+"trait_do3","The person in the recording sounds... - Display Order"
+"trait_do4","The person in the recording sounds... - Display Order"
+"team1","Please indicate your agreement with the questions below:
+
+How much would you like the person in the recording to be (in the following roles)... - your work project team member?"
+"team2","Please indicate your agreement with the questions below:
+
+How much would you like the person in the recording to be (in the following roles)... - your work project team member?"
+"team3","Please indicate your agreement with the questions below:
+
+How much would you like the person in the recording to be (in the following roles)... - your work project team member?"
+"team4","Please indicate your agreement with the questions below:
+
+How much would you like the person in the recording to be (in the following roles)... - your work project team member?"
+"frnd1","Please indicate your agreement with the questions below:
+
+How much would you like the person in the recording to be (in the following roles)... - your close friend?"
+"frnd2","Please indicate your agreement with the questions below:
+
+How much would you like the person in the recording to be (in the following roles)... - your close friend?"
+"frnd3","Please indicate your agreement with the questions below:
+
+How much would you like the person in the recording to be (in the following roles)... - your close friend?"
+"frnd4","Please indicate your agreement with the questions below:
+
+How much would you like the person in the recording to be (in the following roles)... - your close friend?"
+"neighbr1","Please indicate your agreement with the questions below:
+
+How much would you like the person in the recording to be (in the following roles)... - your neighbor?"
+"neighbr2","Please indicate your agreement with the questions below:
+
+How much would you like the person in the recording to be (in the following roles)... - your neighbor?"
+"neighbr3","Please indicate your agreement with the questions below:
+
+How much would you like the person in the recording to be (in the following roles)... - your neighbor?"
+"neighbr4","Please indicate your agreement with the questions below:
+
+How much would you like the person in the recording to be (in the following roles)... - your neighbor?"
+"employee1","Please indicate your agreement with the questions below:
+
+How much would you like the person in the recording to be (in the following roles)... - your employee?"
+"employee2","Please indicate your agreement with the questions below:
+
+How much would you like the person in the recording to be (in the following roles)... - your employee?"
+"employee3","Please indicate your agreement with the questions below:
+
+How much would you like the person in the recording to be (in the following roles)... - your employee?"
+"employee4","Please indicate your agreement with the questions below:
+
+How much would you like the person in the recording to be (in the following roles)... - your employee?"
+"boss1","Please indicate your agreement with the questions below:
+
+How much would you like the person in the recording to be (in the following roles)... - your boss?"
+"boss2","Please indicate your agreement with the questions below:
+
+How much would you like the person in the recording to be (in the following roles)... - your boss?"
+"boss3","Please indicate your agreement with the questions below:
+
+How much would you like the person in the recording to be (in the following roles)... - your boss?"
+"boss4","Please indicate your agreement with the questions below:
+
+How much would you like the person in the recording to be (in the following roles)... - your boss?"
+"role_do1","Please indicate your agreement with the questions below:
+
+How much would you like the person in the recording to be (in the following roles)... - Display Order"
+"role_do2","Please indicate your agreement with the questions below:
+
+How much would you like the person in the recording to be (in the following roles)... - Display Order"
+"role_do3","Please indicate your agreement with the questions below:
+
+How much would you like the person in the recording to be (in the following roles)... - Display Order"
+"role_do4","Please indicate your agreement with the questions below:
+
+How much would you like the person in the recording to be (in the following roles)... - Display Order"
+"thoughts1","Do you have any other thoughts about this person's voice?"
+"thoughts2","Do you have any other thoughts about this person's voice?"
+"thoughts3","Do you have any other thoughts about this person's voice?"
+"thoughts4","Do you have any other thoughts about this person's voice?"
+"leadership1","leadership composite for condition with Black name and high pitched voice"
+"leadership2","leadership composite for condition with Black name and low pitched voice"
+"leadership3","leadership composite for condition with White name and high pitched voice"
+"leadership4","leadership composite for condition with White name and low pitched voice"
+"threatpotential1","threat potential for condition with Black name and high pitched voice"
+"threatpotential2","threat potential for condition with Black name and low pitched voice"
+"threatpotential3","threat potential for condition with White name and high pitched voice"
+"threatpotential4","threat potential for condition with White name and low pitched voice"

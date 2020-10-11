@@ -40,13 +40,13 @@ if(!"papaja" %in% rownames(installed.packages())) devtools::install_github("crsh
 library(papaja)
 ```
 
-## Perceptions of race based on name ratings 
+## Perceptions of race based on name 
 
-```{r f3, fig.align="center", fig.cap= "Descriptive statistics for likelihood that a person is White based upon name.", out.width='35%'}
+```{r f3, fig.align="center", fig.cap= "Participants' responses to the question \"Based upon the names below, please rate the likelihood that the person is White:\" on 100 point slider scale.", out.width='35%'}
 knitr::include_graphics(here("figs", "MC_ratingsw_tbl.png"))
 ```
 
-```{r f4, fig.align="center", fig.cap = "Descriptive statistics for likelihood that a person is Black based upon name.", out.width='35%'}
+```{r f4, fig.align="center", fig.cap = "Participants' responses to the question \"Based upon the names below, please rate the likelihood that the person is Black:\" on 100 point slider scale.", out.width='35%'}
 knitr::include_graphics(here("figs", "MC_ratingsb_tbl.png"))
 ```
 
@@ -72,7 +72,7 @@ knitr::include_graphics(here("figs", "final_table5.png"))
 knitr::include_graphics(here("figs", "final_table6.png"))
 ```
 
-```{r f10, fig.align="center", fig.cap = "Summary of Model 6: Effects of voice pitch and race on perceived threat potential. The dependent variable is threat potential, a composite measure averaging participants ratings of dominance and reverse-scored trustworthiness (both on 100 point scales). See the methods subsection titled \"Multilevel modeling methodology for current research\" for a summary of the random effects section interpretation. p < .05 are bolded.", out.width='85%'}
+```{r f10, fig.align="center", fig.cap = "Summary of Model 6: Effects of voice pitch and race on perceived threat potential. The dependent variable is threat potential, a composite measure averaging participants' ratings of dominance and reverse-scored trustworthiness (both on 100 point scales). See the methods subsection titled \"Multilevel modeling methodology for current research\" for a summary of the random effects section interpretation. p < .05 are bolded.", out.width='85%'}
 knitr::include_graphics(here("figs", "final_table7.png"))
 ```
 
@@ -98,7 +98,7 @@ knitr::include_graphics(here("figs", "compare_table5.png"))
 knitr::include_graphics(here("figs", "compare_table6.png"))
 ```
 
-```{r f16, fig.align="center", fig.cap = "Comparing maximal, final, and robust versions of Model 6: Effects of voice pitch and race on perceived threat potential. The dependent variable across models is threat potential, a composite measure averaging participants ratings of dominance and reverse-scored trustworthiness (both on 100 point scales). See the methods subsection titled \"Multilevel modeling methodology for current research\" for a summary of the random effects section interpretation. p < .05 are bolded.", out.width='85%'}
+```{r f16, fig.align="center", fig.cap = "Comparing maximal, final, and robust versions of Model 6: Effects of voice pitch and race on perceived threat potential. The dependent variable across models is threat potential, a composite measure averaging participants' ratings of dominance and reverse-scored trustworthiness (both on 100 point scales). See the methods subsection titled \"Multilevel modeling methodology for current research\" for a summary of the random effects section interpretation. p < .05 are bolded.", out.width='85%'}
 knitr::include_graphics(here("figs", "compare_table7.png"))
 ```
 
@@ -120,7 +120,7 @@ knitr::include_graphics(here("figs", "asm_mod2.3.png"))
 knitr::include_graphics(here("figs", "asm_mod2.4.png"))
 ```
 
-```{r f19, out.width='50%', fig.show = 'hold', fig.cap = "Assumptions for Model 3: Trustworthiness and dominance predicting threat. The assumptions of normality and homoscedasticity for this model do not appear to have been met, with a relatively non-normal distribution of the residuals and a pattern in the plot showing fitted values against the residuals where there appears to be a sharp cut-off among the lower values of the plot. Thus, readers should compare the results from the final model to the robust version of the model to see if they are replicated."}
+```{r f19, out.width='50%', fig.show = 'hold', fig.cap = "Assumptions for Model 3: Trustworthiness and dominance predicting threat. The assumptions of normality and homoscedasticity for this model do not appear to have been met, with a relatively non-normal distribution of the residuals and a pattern in the plot showing fitted values against the residuals where there appears to be a sharp cut-off among the lower values of the plot. Thus, readers should compare the results from the final model to the robust version of the model to see if they replicate."}
 
 knitr::include_graphics(here("figs", "asm_mod3.1.png"))
 knitr::include_graphics(here("figs", "asm_mod3.2.png"))
@@ -129,7 +129,7 @@ knitr::include_graphics(here("figs", "asm_mod3.4.png"))
 
 ```
 
-```{r f20, out.width='50%', fig.show = 'hold', fig.cap = "Assumptions for Model 4: Effects of race on perceived trustworthiness. The assumptions of normality and homoscedasticity do not appear to have been met. There is not a linear relationship between the predicted values and the residuals, and there does not appear to be constant variance of the residuals. Thus, I encourage readers to refer to the robust model as a point of comparison."}
+```{r f20, out.width='50%', fig.show = 'hold', fig.cap = "Assumptions for Model 4: Effects of race on perceived trustworthiness. The assumptions of normality and homoscedasticity do not appear to have been met. There is not a linear relationship between the predicted values and the residuals, and there does not appear to be constant variance of the residuals. Thus, we encourage readers to refer to the robust model as a point of comparison."}
 
 knitr::include_graphics(here("figs", "asm_mod5.1.png"))
 knitr::include_graphics(here("figs", "asm_mod5.2.png"))
@@ -138,7 +138,7 @@ knitr::include_graphics(here("figs", "asm_mod5.4.png"))
 
 ```
 
-```{r f21, out.width='50%', fig.show = 'hold', fig.cap = "Assumptions for Model 5: Effects of voice pitch on perceived dominance. Readers should compare the effects to the robust version of the model to the effects shown in the final models, since the assumptions of normality and homoscedasticity do not appear to have been met, with a the residuals following a non-normal distribution in the plot comparing the distribution of residuals to the normal distribution and the points in the plot checking homoscedasticity showing a pattern in the variation of the residuals."}
+```{r f21, out.width='50%', fig.show = 'hold', fig.cap = "Assumptions for Model 5: Effects of voice pitch on perceived dominance. Readers should compare the effects from the robust version of the model to the effects shown in the final models, since the assumptions of normality and homoscedasticity do not appear to have been met, with a the residuals following a non-normal distribution in the plot comparing the distribution of residuals to the normal distribution and the points in the plot checking homoscedasticity showing a pattern in the variation of the residuals."}
 
 knitr::include_graphics(here("figs", "asm_mod6.1.png"))
 knitr::include_graphics(here("figs", "asm_mod6.2.png"))
@@ -168,7 +168,7 @@ knitr::write_bib(PackagesUsed, file = here("paper", "pkg-refs.bib"))
 
 ## Software references
 
-We used the following packages for analyses and write-up `r cite_r("pkg-refs.bib")`. 
+We used the following for analyses and write-up: `r cite_r("pkg-refs.bib")`. 
 
 
 

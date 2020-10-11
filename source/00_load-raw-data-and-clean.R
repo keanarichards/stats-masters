@@ -142,9 +142,6 @@ col_names_des <- col_names_des %>% add_row(
 
 write.csv(col_names_des, here("data", "vars-and-labels.csv"), row.names = F)
 
-
-
-
 ## removing extra row (description from qualtrics)
 
 raw <- raw[-1, ]

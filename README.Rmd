@@ -1,19 +1,21 @@
+---
+title: "README"
+author: "Keana Richards"
+output: github_document
+---
 
-# Statistics Master's Thesis
+# Reproducing results: 
 
-Keana Richards 
-
---- 
-
-Note: words that are italicized below represent code   
-
-## Setting up: 
-
-
-First must run the add .here file to directory. 
-Then, you must load the "here" package so the source files will run properly, see more on why the "here" package is a good idea [here](http://jenrichmond.rbind.io/post/how-to-use-the-here-package/), [here](https://github.com/jennybc/here_here), and [here](https://malco.io/2018/11/05/why-should-i-use-the-here-package-when-i-m-already-using-projects/)!
+Before attempting to reproduce any of these results, you will need to load the "here" package so the source files will run properly, see more on why the "here" package is a good idea [here](http://jenrichmond.rbind.io/post/how-to-use-the-here-package/), [here](https://github.com/jennybc/here_here), and [here](https://malco.io/2018/11/05/why-should-i-use-the-here-package-when-i-m-already-using-projects/)!
 After loading the package, run the following in the console before starting the project:
 *set_here()*, which will ensure that the gender practice project is the root directory for all associated code. To check that this worked, go to the folder that has the gender-practice.Rproj and make sure that there is a .here file in the same folder as the .Rproj file.  
+
+
+There are a few options for reproducing the results found in this thesis. First, if you are solely interested in reproducing the analyses themselves, you can go to the "source" subdirectory and run any of those files directly. Note, they are not dependent on each other, so you do not need to run the code to load the raw data and clean it (unless you deleted the cleaned versions of the files in the data directory). 
+
+
+If you want to recreate the entire paper, you will need to install the papaja package in advance.  
+
 
  
 There are two options for replicating the results and compiling the full paper after forking this project (note: for both of these options, this process will likely take several hours the first time the code is run - after which the most computationally intensive code chunks will be cached, so the code will take far less time after running thereafter): 
@@ -30,16 +32,10 @@ Running the makefile using *make all* in the RStudio Terminal will re-run all co
 
 To run specific parts of the analyses, enter *make help* into the terminal, which will list commands and their respective output for some of the major parts of the analyses (e.g., results documents, methods documents) 
 
-## Logistics:
+# Logistics:
 
-All variables names and descriptions can be found in the files called "vars-and-labels" in respective (e.g., pilot, study 1, or study 2) data directory
+All variables names and descriptions can be found in the files called "vars-and-labels" in the data directory
 
-Excluded participants for each study can be found in data - "excluded.csv" files in respective (e.g., either pilot, study 1, or study 2) data directory 
-
-## Coding scheme:
-
-Reference categories: 
-
-Gender = men <br><br>
-Competition choice = piece-rate 
-
+```{r, echo=FALSE}
+sessionInfo()
+```
