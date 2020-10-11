@@ -2,44 +2,45 @@ README
 ================
 Keana Richards
 
-# Reproducing results:
+# Reproducing the results:
 
-Before attempting to reproduce any of these results, you will need to
-load the “here” package so the source files will run properly, see more
-on why the “here” package is a good idea
+Before attempting to reproduce any of these results after forking this
+project, you will need to install and load the `here` package so the
+source files will run properly, see more on why the `here` package is a
+good idea
 [here](http://jenrichmond.rbind.io/post/how-to-use-the-here-package/),
 [here](https://github.com/jennybc/here_here), and
 [here](https://malco.io/2018/11/05/why-should-i-use-the-here-package-when-i-m-already-using-projects/)\!
-After loading the package, run the following in the console before
-starting the project: *set\_here()*, which will ensure that the gender
-practice project is the root directory for all associated code. To check
-that this worked, go to the folder that has the gender-practice.Rproj
-and make sure that there is a .here file in the same folder as the
-.Rproj file.
 
-There are a few options for reproducing the results found in this
-thesis. First, if you are solely interested in reproducing the analyses
-themselves, you can go to the “source” subdirectory and run any of those
-files directly. Note, they are not dependent on each other, so you do
-not need to run the code to load the raw data and clean it (unless you
-deleted the cleaned versions of the files in the data directory).
+After loading the package, open the `stats-masters.Rproj` in Rstudio and
+run the following in the console:
 
-If you want to recreate the entire paper, you will need to install the
-papaja package in advance.
+`set_here()`
 
-There are two options for replicating the results and compiling the full
-paper after forking this project (note: for both of these options, this
-process will likely take several hours the first time the code is run -
-after which the most computationally intensive code chunks will be
-cached, so the code will take far less time after running thereafter):
+This will ensure that the stats-masters project is the root directory
+for all associated code. To check that this worked, go to the
+“stats-masters” folder that has the `stats-masters.Rproj` and make
+sure that there is a .here file in the same folder as the .Rproj file.
 
-1)  To automate the compilation process using the Knitr, first run the
-    “00\_load-raw-data-and-clean.R” file in the “source” directory.
-    Then, you can go to the “full\_paper.Rmd” document within the
-    “paper” directory. Open this file and knit the document
-    (Ctrl+Shift+K on Windows & Linux or Command+Shift+K on macOS).
+There are a few options for reproducing the results found in this thesis
+(note: you want to recreate the entire paper, you will need to install
+the papaja and tinytex packages in advance - see
+[here](https://github.com/crsh/papaja) for more information on how to
+install this and its dependencies):
 
-2)  To automate the compilation process using the Makefile in the main
+1)  First, if you are solely interested in reproducing the analyses
+    themselves, you can go to the “source” subdirectory and run any of
+    those files directly. Note, they are not dependent on each other, so
+    you do not need to run the code to load the raw data and clean it
+    (unless you deleted the cleaned versions of the files in the data
+    directory).
+
+2)  To automate the compilation process using the Knitr, you can go to
+    the “full\_paper.Rmd” document within the “paper” directory. Open
+    this file and knit the document (Ctrl+Shift+K on Windows & Linux or
+    Command+Shift+K on macOS).
+
+3)  To automate the compilation process using the Makefile in the main
     directory, you will need to have GNU Make downloaded, which can be
     used to run the Makefile that compiles the whole project (or parts
     of the project as needed). See [Jenny Bryan’s incredible course,
@@ -74,8 +75,24 @@ documents)
 
 # Logistics:
 
-All variables names and descriptions can be found in the files called
-“vars-and-labels” in the data directory
+  - All variables names and descriptions can be found in the files
+    called “vars-and-labels” in the data directory
+
+  - Running the main analyses in the 01\_preregistered-analyses.R file
+    will likely take several hours the first time the code is run
+    (unless you comment out the rlmer analyses). However, if you knit
+    the entire folder when you run this code, it will take less time the
+    next time you knit the document because the most computationally
+    intensive code chunks will be cached, so the code will take far less
+    time after running thereafter,
+
+  - You can find the pre-registration, original survey questions, and
+    the stimuli of this project [here](https://osf.io/r8m2u/)
+
+  - the voice\_manipulations.csv contains the summary statistics on the
+    voice manipulations from Praat
+
+Session info for my version of the paper:
 
     ## R version 3.6.3 (2020-02-29)
     ## Platform: x86_64-w64-mingw32/x64 (64-bit)
