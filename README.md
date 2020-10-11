@@ -1,6 +1,3 @@
-README
-================
-Keana Richards
 
 # Reproducing the results:
 

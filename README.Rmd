@@ -1,6 +1,4 @@
 ---
-title: "README"
-author: "Keana Richards"
 output: github_document
 ---
 
@@ -14,7 +12,7 @@ After loading the package, open the `stats-masters.Rproj` in Rstudio and run the
 
 This will ensure that the stats-masters project is the root directory for all associated code. To check that this worked, go to the "stats-masters" folder that has the `stats-masters.Rproj` and make sure that there is a .here file in the same folder as the .Rproj file.  
 
-There are a few options for reproducing the results found in this thesis (note: you want to recreate the entire paper, you will need to install the papaja and tinytex packages in advance - see [here](https://github.com/crsh/papaja) for more information on how to install this and its dependencies):  
+There are a few options for reproducing the results found in this thesis (note: if you want to recreate the entire paper, you will need to install the papaja and tinytex packages in advance - see [here](https://github.com/crsh/papaja) for more information on how to install this and its dependencies):  
 
 1) First, if you are solely interested in reproducing the analyses themselves, you can go to the "source" subdirectory and run any of those files directly. Note, they are not dependent on each other, so you do not need to run the code to load the raw data and clean it (unless you deleted the cleaned versions of the files in the data directory). 
 
