@@ -1,7 +1,7 @@
 # load packages -----------------------------------------------------------
 
 ## Package names
-packages <- c("here", "tidyverse", "sjPlot", "sjmisc", "lme4", "sjlabelled", "papaja", "robustlmm", "memisc", "webshot", "gtsummary", "gt")
+packages <- c("here", "tidyverse", "sjPlot", "sjmisc", "lme4", "sjlabelled", "papaja", "robustlmm", "memisc", "webshot", "gtsummary", "gt", "glmmTB", "ggpubr")
 
 ## Install packages not yet installed
 installed_packages <- packages %in% rownames(installed.packages())

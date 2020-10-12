@@ -125,14 +125,19 @@ col_names_des <- data.frame(cbind(col_names, des))
 
 col_names_des <- col_names_des %>% add_row(
   col_names = c(
-    "leadership1", "leadership2", "leadership3", "leadership4", "threatpotential1",
-    "threatpotential2", "threatpotential3", "threatpotential4"
+    "leadership_1", "leadership_2", "leadership_3", "leadership_4", "trust_rev1",
+    "trust_rev2", "trust_rev3", "trust_rev4", "threatpotential_1",
+    "threatpotential_2", "threatpotential_3", "threatpotential_4"
   ),
   des = c(
     "leadership composite for condition with Black name and high pitched voice",
     "leadership composite for condition with Black name and low pitched voice",
     "leadership composite for condition with White name and high pitched voice",
     "leadership composite for condition with White name and low pitched voice",
+    "reverse-scored trustworthiness ratings for condition with Black name and high pitched voice",
+    "reverse-scored trustworthiness ratings for condition with Black name and low pitched voice",
+    "reverse-scored trustworthiness ratings for condition with White name and high pitched voice",
+    "reverse-scored trustworthiness ratings for condition with White name and low pitched voice",
     "threat potential for condition with Black name and high pitched voice",
     "threat potential for condition with Black name and low pitched voice",
     "threat potential for condition with White name and high pitched voice",

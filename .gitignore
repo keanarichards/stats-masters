@@ -2,3 +2,6 @@
 .Rhistory
 .RData
 .Ruserdata
+paper/full_paper_cache
+paper/01_methods_cache
+paper/02_results_cache

@@ -36,7 +36,7 @@ To run specific parts of the analyses, enter *make help* into the terminal, whic
 
 - You can find the pre-registration, original survey  questions, and the stimuli of this project [here](https://osf.io/r8m2u/)
 
-- the voice_manipulations.csv contains the summary statistics on the voice manipulations from Praat 
+- the voice_manipulations.csv in the "data" folder contains the summary statistics on the voice manipulations from Praat 
 
 Session info for my version of the paper:
 
