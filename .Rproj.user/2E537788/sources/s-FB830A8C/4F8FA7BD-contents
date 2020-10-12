@@ -1,0 +1,76 @@
+---
+output: pdf_document
+---
+
+```{r, include = F}
+
+## hiding code chunks globally 
+knitr::opts_chunk$set(echo=F, message = F, warning = F)
+
+
+## limiting number of digits to 2 decimal places
+options(digits = 2)
+
+# load packages -----------------------------------------------------------
+
+
+## Install devtools package if necessary
+if(!"devtools" %in% rownames(installed.packages())) install.packages("devtools")
+
+
+## Package names
+packages <- c("readr", "tidyverse", "here", "devtools", "knitr", "officer", "summarytools")
+
+## Install packages not yet installed
+installed_packages <- packages %in% rownames(installed.packages())
+if (any(installed_packages == FALSE)) {
+  install.packages(packages[!installed_packages])
+}
+
+## Packages loading
+invisible(lapply(packages, library, character.only = TRUE))
+
+## Install the stable development versions from GitHub
+if(!"papaja" %in% rownames(installed.packages())) devtools::install_github("crsh/papaja")
+
+library(papaja)
+
+```
+
+```{r, cache = T, include = F}
+library(here)
+source(here("source", "01_preregistered-analyses.R"))
+
+```
+
+## Effects of voice pitch and race on perceived threat
+
+We ran a multilevel model with threat as a dependent variable and fixed effects for voice pitch, race, and an interaction term for voice pitch and race, along with by-subject random slopes for the effects of voice pitch and race and a by-voice random slope for the effect of voice pitch. More specifically, the model was specified as follows^[Note: "C" at the end of race and voice pitch represents the recoded versions of the variables]: threat \~ cond\_pitchC + cond\_raceC + cond\_pitchC\ $\times$ cond\_raceC + (1 +cond\_raceC + cond\_pitchC\| id) + (1 + cond\_pitchC\| voice) (Model 1 in Appendix).
+
+There was a main effect of voice pitch upon perceived threat, $\beta$ = `r printnum(tidy1[2, 4])`, *t* = `r printnum(tidy1[2, 6])`, *p* `r printp(as.numeric(tidy1[2, 8]),add_equals = T)`, where low voices were perceived as significantly more threatening compared to high voices (see Figure \@ref(fig:f1)). Race did not significantly predict perceived threat, $\beta$ = `r printnum(tidy1[3, 4])`, *t* = `r printnum(tidy1[3, 6])`, *p* `r printp(as.numeric(tidy1[3, 8]), add_equals = T)`, and the interaction between the variables was not significant, $\beta$ = `r printnum(tidy1[4, 4])`, *t* = `r printnum(tidy1[4, 6])`, *p* `r printp(as.numeric(tidy1[4, 8]),add_equals = T)`.
+
+```{r f1, fig.retina=NULL, out.width="300px",  fig.align="center",  fig.cap = "Mean perceptions of threat as a function of voice pitch and perceived race. Error bars represent 95 percent confidence intervals. The perceptions of threat items were on 100 point scales."}
+knitr::include_graphics(here::here("figs","fixed_plot1.png"))
+```
+
+## Effects of voice pitch and race on perceived leadership ability
+
+To determine the effect of voice and race upon perceived leadership ability, we ran a 2 (voice pitch: high or low) X 2 (race: Black or White) analysis with the leadership composite score as the dependent measure. The model specification was as follows: leadership \~ cond\_pitchC + cond\_raceC + cond\_pitchC\ $\times$ cond\_raceC + (1 + cond\_pitchC \| voice) + (1 \| id) (Model 2 in Appendix). In contrast to previous studies, voice pitch did not significantly predict perceptions of leadership ability, $\beta$ = `r printnum(tidy2[2, 4])`, *t* = `r printnum(tidy2[2, 6])`, *p* `r printp(as.numeric(tidy2[2, 8]),add_equals = T)`. However race significantly predicted perceptions of leadership composite ratings, $\beta$ = `r printnum(tidy2[3, 4])`, *t* = `r printnum(tidy2[3, 6])`, *p* `r printp(as.numeric(tidy2[3, 8]),add_equals = T)` (see Figure \@ref(fig:f2)). Unexpectedly, Black voices were rated higher on leadership traits compared to White voices. The interaction between race and voice pitch on perceived leadership ability was not significant, $\beta$ = `r printnum(tidy1[4, 4])`, *t* = `r printnum(tidy1[4, 6])`, *p* `r printp(as.numeric(tidy1[4, 8]),add_equals = T)`.
+
+```{r f2, fig.retina=NULL, out.width="300px",  fig.align="center", fig.cap = "Mean perceptions of leadership traits as a function of voice pitch and perceived race. Error bars represent 95 percent confidence intervals. The perceptions of leadership items were on 100 point scales."}
+knitr::include_graphics(here::here("figs","fixed_plot2.png"))
+```
+
+## Trustworthiness and dominance predicting threat
+
+To examine the relationship between trustworthiness and dominance with perceived threat, we ran a multilevel model with fixed effects for trustworthiness and dominance predicting perceived threat, along with random intercepts for participant and voice. Notably, the Hausman test comparing the fixed effects estimator and random effects estimator for this model suggested that the random effects assumption was not met. Therefore, we employ a CRE model by including the cluster-means for both voice pitch and participant as controls for each fixed effect. The final model specification was as follows: threat \~ trust + dom + trustC\_id + domC\_id +trustC\_voice + domC\_voice + (1 \| id) + (1 \| voice) (Model 3 in Appendix). Overall, we found that trustworthiness was negatively related to threat, $\beta$ = `r printnum(tidy3[2, 4])`, *t* = `r printnum(tidy3[2, 6])`, *p* `r printp(as.numeric(tidy3[2, 8]),add_equals = T)`, while dominance was positively related to threat, $\beta$ = `r printnum(tidy3[3, 4])`, *t* = `r printnum(tidy3[3, 6])`, *p* `r printp(as.numeric(tidy3[3, 8]),add_equals = T)`.
+
+## Effects of race on perceived trustworthiness & voice pitch on perceived dominance
+
+To determine the main effect of race upon perceived trustworthiness, we ran a multilevel model with fixed effects for race, perceived trustworthiness as the dependent measure, and random effects for participant and voice to examine whether race altered perceptions of trustworthiness. Based on our random effects selection criteria, we ran the following model: trust \~ cond\_raceC + (1 \| id) + (1 \| voice) (Model 4 in Appendix). There was a marginally significant effect of race upon perceived trustworthiness, $\beta$ = `r printnum(tidy5[2, 4])`, *t* = `r printnum(tidy5[2, 6])`, *p* `r printp(as.numeric(tidy5[2, 8]),add_equals = T)`, where Black men were perceived as more trustworthy than White men.
+
+We also tested whether voice pitch predicted perceived dominance with perceived dominance as the dependent measure using the following random effects specification: dom \~ cond\_pitchC + (1 \| voice) + (1 \| id) (Model 5 in Appendix). The effect of voice pitch on perceived dominance was significant, $\beta$ = `r printnum(tidy6[2, 4])`, *t* = `r printnum(tidy6[2, 6])`, *p* `r printp(as.numeric(tidy6[2, 8]),add_equals = T)`, where higher-pitched voices were less likely to be perceived as dominant.
+
+## Interaction between voice pitch and race on perceived threat potential
+
+For our last pre-registered analysis, we examined the effect of voice pitch and race on perceived threat potential, a composite score created by averaging ratings of dominance and reverse-scored ratings of trust (by subtracting each rating from 100) within each condition. For instance, if a participant perceives a voice as extremely dominant (e.g., rating of 95), but also high in trustworthiness (e.g., rating of 95 on original trust measure, -95 after reverse-scoring), their overall threat potential score will be 0. On the other hand, participants rated low on trustworthiness and high on dominance will have high threat potential ratings. This analysis serves as a means of conceptually replicating the primary analysis with voice pitch and race predicting ratings of perceived threat. As suggested previously, research suggests that faces perceived as dominant and untrustworthy are the most likely to be perceived as threatening [@Oosterhof2008]. We expect voices will be categorized in a similar manner, and as such, our findings from the primary analysis with voice pitch and race predicting perceived threat will be replicated using the perceived threat potential composite measure as a proxy for perceived threat. The perceived threat potential measure was submitted as the dependent variable to a multilevel model with the following random effects structure: threatpotential \~ cond\_raceC + cond\_pitchC + cond\_raceC\ $\times$ cond\_pitchC + (1 + cond\_pitchC \| voice) + (1 \| id) (Model 6 in Appendix). We find evidence that voice pitch significantly predicts perceived threat potential, $\beta$ = `r printnum(tidy7[3, 4])`, *t* = `r printnum(tidy7[3, 6])`, *p* `r printp(as.numeric(tidy7[3, 8]),add_equals = T)`, with higher pitched voices perceived as less threatening. However, we do not find evidence of a significant effect of race, , $\beta$ = `r printnum(tidy7[2, 4])`, *t* = `r printnum(tidy7[2, 6])`, *p* `r printp(as.numeric(tidy7[2, 8]),add_equals = T)`, nor the interaction between race and voice pitch, $\beta$ = `r printnum(tidy7[4, 4])`, *t* = `r printnum(tidy7[4, 6])`, *p* `r printp(as.numeric(tidy7[4, 8]),add_equals = T)`.
