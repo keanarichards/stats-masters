@@ -24,7 +24,7 @@ There are a few options for reproducing the results found in this thesis (note: 
 
 - All variables names and descriptions can be found in the files called "vars-and-labels" in the data directory
 
-- Running the main analyses in the 01_preregistered-analyses.R file will likely take several hours whenever the code is run (unless you comment out the rlmer analyses). However, if you knit the "full_paper.Rmd" file in the paper folder to run the code, it will take less time the next time you knit the document because the most computationally intensive code chunks will be cached, so the code will take far less time after running thereafter, 
+- Running the main analyses in the 01_preregistered-analyses.R file will likely take several hours whenever the code is run (unless you comment out the rlmer analyses). However, if you knit the "full_paper.Rmd" file in the paper folder to run the code, it will take less time the next time you knit the document because the most computationally intensive code chunks will be cached, so the code will take far less time after running thereafter. 
 
 - You can find the pre-registration, original survey  questions, and the stimuli of this project [here](https://osf.io/r8m2u/)
 

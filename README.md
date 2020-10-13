@@ -75,7 +75,7 @@ install this and its dependencies):
     “full\_paper.Rmd” file in the paper folder to run the code, it
     will take less time the next time you knit the document because the
     most computationally intensive code chunks will be cached, so the
-    code will take far less time after running thereafter,
+    code will take far less time after running thereafter.
 
   - You can find the pre-registration, original survey questions, and
     the stimuli of this project [here](https://osf.io/r8m2u/)
