@@ -46,29 +46,23 @@ install this and its dependencies):
     details on makefiles and to find more resources on using makefiles.
     One of the benefits of this option is that certain parts of the
     analyses can be replicated without needing to re-compile all of the
-    documents at once.
-
-I also recommend reading the section on Makefiles from “Reproducible
-Research with R and RStudio” from Christopher Gandrud for a
-beginner-friendly explanation of what they do and some basic syntax.
-
-Once GNU Make is downloaded, check that it will be used to compile the
-product by going to the ‘Build’ \>\> ‘Configure Build Tools’ at the top
-of the screen in RStudio. Under the dropdown for Project build tools,
-click ‘Makefile’ and make sure that the “Makefile directory” is set to
-“(Project Root).” If there are any issues with this, try the link
-above to learn more about GNU Make or the various resources on that
-page.
-
-Running the makefile using *make all* in the RStudio Terminal will
-re-run all code from start to finish to produce the final product. If
-the terminal is not preferable, another option to compile the final
-product is to click “Build” at the top of RStudio and run “Build all.”
-
-To run specific parts of the analyses, enter *make help* into the
-terminal, which will list commands and their respective output for some
-of the major parts of the analyses (e.g., results documents, methods
-documents)
+    documents at once. I also recommend reading the section on Makefiles
+    from “Reproducible Research with R and RStudio” from Christopher
+    Gandrud for a beginner-friendly explanation of what they do and some
+    basic syntax. Once GNU Make is downloaded, check that it will be
+    used to compile the product by going to the ‘Build’ \>\> ‘Configure
+    Build Tools’ at the top of the screen in RStudio. Under the dropdown
+    for Project build tools, click ‘Makefile’ and make sure that the
+    “Makefile directory” is set to “(Project Root).” If there are any
+    issues with this, try the link above to learn more about GNU Make or
+    the various resources on that page. Running the makefile using *make
+    all* in the RStudio Terminal will re-run all code from start to
+    finish to produce the final product. If the terminal is not
+    preferable, another option to compile the final product is to click
+    “Build” at the top of RStudio and run “Build all.” To run specific
+    parts of the analyses, enter *make help* into the terminal, which
+    will list commands and their respective output for some of the major
+    parts of the analyses (e.g., results documents, methods documents)
 
 # Logistics:
 
@@ -76,12 +70,12 @@ documents)
     called “vars-and-labels” in the data directory
 
   - Running the main analyses in the 01\_preregistered-analyses.R file
-    will likely take several hours the first time the code is run
-    (unless you comment out the rlmer analyses). However, if you knit
-    the entire folder when you run this code, it will take less time the
-    next time you knit the document because the most computationally
-    intensive code chunks will be cached, so the code will take far less
-    time after running thereafter,
+    will likely take several hours whenever the code is run (unless you
+    comment out the rlmer analyses). However, if you knit the
+    “full\_paper.Rmd” file in the paper folder to run the code, it
+    will take less time the next time you knit the document because the
+    most computationally intensive code chunks will be cached, so the
+    code will take far less time after running thereafter,
 
   - You can find the pre-registration, original survey questions, and
     the stimuli of this project [here](https://osf.io/r8m2u/)
